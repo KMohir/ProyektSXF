@@ -1,0 +1,26 @@
+[Unit]
+Description=Telegram Task Manager Bot
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=your_user
+Group=your_group
+WorkingDirectory=/path/to/telegram-task-bot
+Environment="PATH=/path/to/telegram-task-bot/venv/bin"
+ExecStart=/path/to/telegram-task-bot/venv/bin/python run.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/var/log/telegram-bot/output.log
+StandardError=append:/var/log/telegram-bot/error.log
+
+# Безопасность
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/path/to/telegram-task-bot
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+# Примеры cron задач для автоматизации
+
+# Мониторинг каждые 6 часов
+0 */6 * * * cd /path/to/telegram-task-bot && /path/to/venv/bin/python monitor.py
+
+# Резервное копирование каждый день в 3:00
+0 3 * * * cd /path/to/telegram-task-bot && /path/to/venv/bin/python utils/backup.py
+
+# Проверка здоровья каждый час
+0 * * * * cd /path/to/telegram-task-bot && /path/to/venv/bin/python utils/health_check.py
+
+# Очистка старых логов каждую неделю
+0 0 * * 0 find /path/to/telegram-task-bot/logs -name "*.log.*" -mtime +30 -delete
