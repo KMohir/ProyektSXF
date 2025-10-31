@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Копирование кода
-COPY . .
+# COPY . .
 
 # Создание директории для логов
 RUN mkdir -p /app/logs
